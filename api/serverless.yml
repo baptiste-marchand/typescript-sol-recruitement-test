@@ -1,0 +1,24 @@
+service: serverlessSetup
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-west-1
+
+functions:
+  hello:
+    handler: src/functions/hello.handler
+    events:
+      - http: 
+          path: serverlessSetup/hello
+          method: get
+  goodbye:
+    handler: src/functions/goodbye.handler
+    events:
+      - http: 
+          path: serverlessSetup/goodbye
+          method: post
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
