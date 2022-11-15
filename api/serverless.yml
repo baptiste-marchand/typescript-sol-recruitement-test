@@ -6,17 +6,11 @@ provider:
   region: us-west-1
 
 functions:
-  hello:
-    handler: src/functions/hello.handler
+  nft-sig:
+    handler: src/functions/nft-sig.handler
     events:
-      - http: 
-          path: serverlessSetup/hello
-          method: get
-  goodbye:
-    handler: src/functions/goodbye.handler
-    events:
-      - http: 
-          path: serverlessSetup/goodbye
+      - http:
+          path: serverlessSetup/nft-sig
           method: post
 
 plugins:
