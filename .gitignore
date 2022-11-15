@@ -2,3 +2,7 @@
 /api/.idea/
 /api/node_modules/
 /api/.serverless/
+
+/front/.idea/
+/front/node_modules/
+/front/.next/
