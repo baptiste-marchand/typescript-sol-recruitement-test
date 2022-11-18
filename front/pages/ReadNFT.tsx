@@ -1,20 +1,24 @@
 import { useState, useEffect } from "react";
 import { useContractRead } from "wagmi";
-import { ERC721Abi } from "../contracts/ERC721";
-import { ethers } from "ethers";
+import { KairosTestAbi } from "../contracts/KairosTest";
 
 export function ReadNFT() {
   const [data, setData] = useState<any>(null);
-  const [nftId, setNftId] = useState<any>("1");
+  const [nftId, setNftId] = useState<number>(1);
   const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
   const { refetch } = useContractRead({
     address: contractAddress,
-    abi: ERC721Abi,
-    functionName: "ownerOf",
-    args: [ethers.BigNumber.from(nftId)],
+    abi: KairosTestAbi,
+    functionName: "getNFT",
+    args: [nftId],
     onSuccess: (result) => {
-      setData(result);
+        const nft = [
+          result[0].toString(),
+          result.tokenId.toNumber(),
+        ];
+        setData(nft);
+        console.log(result.tokenId.toNumber());
     },
     onError: (error) => {
       console.error(error);
@@ -22,24 +26,27 @@ export function ReadNFT() {
   });
 
   useEffect(() => {
-    refetch();
-  }, [nftId]);
+    if (nftId) {
+      refetch();
+    }
+  }, [nftId, refetch]);
 
   return (
     <div>
       <h1>Read NFT</h1>
       <label htmlFor="nftId">NFT ID = </label>
       <input
-        type="text"
+        type="number"
         id="nftId"
         name="nftId"
         value={nftId}
-        onChange={(e) => setNftId(e.target.value)}
+        onChange={(e) => setNftId(parseInt(e.target.value))}
       />
       {data && (
-        <div>
-          <p>{data}</p>
-        </div>
+        <>
+          <div>Contract address = {data[0]}</div>
+          <div>Token ID = {data[1]}</div>
+        </>
       )}
     </div>
   );

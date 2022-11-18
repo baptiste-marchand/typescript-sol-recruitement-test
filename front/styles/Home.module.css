@@ -12,6 +12,12 @@
   align-items: center;
 }
 
+.connectButton {
+  position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
 .title {
   margin: 3rem 0;
   line-height: 1;

@@ -9,11 +9,13 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <Head>
         <title>Kairos-loan Recruitment Test</title>
-        <meta name="recruitment test for kairos-loan from Baptiste M." />
+        <meta name="recruitment tests for kairos-loan from Baptiste M." />
       </Head>
 
       <main className={styles.main}>
-        <ConnectButton />
+        <div className={styles.connectButton}>
+          <ConnectButton />
+        </div>
         <h1 className={styles.title}>
           Welcome to <span style={{ color: "#041cb4" }}>Kairos-loan</span> Full
           Stack Engineer recruitment test
