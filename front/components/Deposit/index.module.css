@@ -1,0 +1,10 @@
+.txFailed {
+    background-color: red;
+}
+
+.txSuccess {
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #00b700;
+}
