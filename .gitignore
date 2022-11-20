@@ -1,8 +1,12 @@
-/.idea/
-/api/.idea/
-/api/node_modules/
+**/.idea
+**/node_modules/
+
 /api/.serverless/
 
-/front/.idea/
-/front/node_modules/
 /front/.next/
+
+/contracts/cache/
+/contracts/lib/
+/contracts/out/
+/contracts/script/
+
