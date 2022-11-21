@@ -41,6 +41,6 @@
     "aws-lambda": "^1.0.6",
     "cross-env": "^7.0.3",
     "dotenv-safe": "^8.2.0",
-    "ethers": "^5.7.2"
+    "ethers": "5.7.2"
   }
 }
