@@ -1,14 +1,12 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { ethers } from 'ethers';
-import { readFileSync } from 'fs';
 
 function createEthersContract(privateKey: string): ethers.Contract {
-    const contractAddress = '0x4079d67Cf4Ba28943ae4C096d9e84aB63C1A2853';
-    const abi = readFileSync('./ABIs/KairosTest.json', 'utf-8').toString();
+    const contractAddress: string = process.env.CONTRACT_ADDRESS!;
     const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL);
     const wallet = new ethers.Wallet(privateKey, provider);
     const signer = wallet.connect(provider);
-    return new ethers.Contract(contractAddress, abi, signer);
+    return new ethers.Contract(contractAddress, process.env.KAIROS_TEST_ABI!, signer);
 }
 
 export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
